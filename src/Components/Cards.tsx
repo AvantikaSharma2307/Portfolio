@@ -1,18 +1,23 @@
 import { CardSpotlight } from "../ui/CardSpotlight";
 import './Card.css';
 
-export function CardSpotlightDemo() {
+interface CardSpotlightDemoProps {
+  name: string;
+  image: string;
+  url:string;
+}
+export function CardSpotlightDemo({name,image,url}: CardSpotlightDemoProps) {
   return (
     <CardSpotlight className="h-96 w-96">
-      <p className="text-xl font-bold relative z-20 mt-2 text-white">
-      Recipe Project
+      <p className="text-xl font-bold relative z-20  text-white">
+      {name}
       </p>
       <div className="text-neutral-200 mt-4 relative z-20">
-       <img src ="" alt="recipe project"></img>
+       <img src ={image} alt="recipe project" className="h-56 w-full"></img>
       </div>
   
-<div className="btn mt-44">
-  <span className="noselect">Github Link</span>
+<div className="btn mt-4">
+  <a href ={url}><span className="noselect">Github Link</span></a>
 </div>
     </CardSpotlight>
   );

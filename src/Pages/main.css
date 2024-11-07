@@ -1,40 +1,162 @@
-/* From Uiverse.io by Yaseen549 */
+/* Card Component */
 .card {
-    border-radius: 10px;
-    background: #1e1e1e; /* Slightly lighter dark grey for better contrast */
-    color: #e0e0e0; /* Light text color for readability */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), 
-                0 6px 20px rgba(0, 0, 0, 0.3); /* Softer shadow for better visibility */
-    padding: 20px; /* Added padding for better content spacing */
-    transition: background 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effect */
+  border-radius: 10px;
+  background: #1e1e1e; /* Slightly lighter dark grey for better contrast */
+  color: #e0e0e0; /* Light text color for readability */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), 
+              0 6px 20px rgba(0, 0, 0, 0.3); /* Softer shadow for better visibility */
+  padding: 20px; /* Added padding for better content spacing */
+  transition: background 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effect */
 }
 
-/* .card:hover {
-    background: #2c2c2c; /* Slightly lighter on hover for visual feedback */
-    /* box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7), 
-                0 8px 24px rgba(0, 0, 0, 0.4); /* Enhanced shadow effect on hover */
-/* } */ 
+/* Card Hover Effect */
+.card:hover {
+  background: #2c2c2c; /* Slightly lighter background on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7), 
+              0 8px 24px rgba(0, 0, 0, 0.4); /* Enhanced shadow */
+}
 
-/* styles.css */
+/* Tooltip Styles */
 .tooltip {
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 8px;
-    padding: 4px 8px;
-    background-color: #333;
-    color: #fff;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+  padding: 4px 8px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.group:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Form Container Styles */
+.form-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto; /* Centers the form */
+  background: linear-gradient(#050505, #050202) padding-box,
+              linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff) border-box;
+  border: 2px solid transparent;
+  padding: 32px 24px;
+  font-size: 14px;
+  font-family: inherit;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  gap: 20px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background-size: 200% 100%;
+  animation: gradient 5s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0% 50%;
   }
-  
-  .group:hover .tooltip {
-    opacity: 1;
-    visibility: visible;
+  50% {
+      background-position: 100% 50%;
   }
-  
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+/* Form Inputs and Textarea */
+.form-container .form-group input,
+.form-container .form-group textarea {
+  width: 100%; /* Makes input and textarea responsive */
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #fff;
+  background-color: transparent;
+  border: 1px solid #414141;
+}
+
+.form-container .form-group input::placeholder,
+.form-container .form-group textarea::placeholder {
+  opacity: 0.5;
+}
+
+.form-container .form-group input:focus,
+.form-container .form-group textarea:focus {
+  outline: none;
+  border-color: #e81cff;
+}
+
+/* Button Active State */
+.form-container button:active {
+  scale: 0.95;
+}
+
+/* Form Group Styles */
+.form-container .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.form-container .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #717171;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/* Form Submit Button */
+.form-container .form-submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  color: #717171;
+  font-weight: 600;
+  width: 40%;
+  background: #313131;
+  border: 1px solid #414141;
+  padding: 12px 16px;
+  font-size: inherit;
+  margin-top: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.form-container .form-submit-btn:hover {
+  background-color: #fff;
+  border-color: #fff;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .form-container {
+      width: 90%; /* Reduces width on small screens */
+      padding: 20px; /* Adjust padding */
+  }
+
+  .form-container .form-submit-btn {
+      width: 60%; /* Makes the button wider on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container {
+      width: 100%; /* Full width on very small screens */
+      padding: 16px; /* Further reduced padding */
+  }
+
+  .form-container .form-submit-btn {
+      width: 80%; /* Full width on very small screens */
+  }
+}

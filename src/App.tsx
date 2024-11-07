@@ -1,9 +1,9 @@
 import './App.css';
-import Home from '../src/Pages/Home'
 // import About from '../src/Pages/About'
 import { BrowserRouter  as Router,Routes,Route} from "react-router-dom";
 import NavBar from './Components/Navbar';
 import Mainpage from './Pages/Mainpage';
+import Resume from './Pages/Resume';
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
  
       {/* <Route path="/" element={<Home/>} /> */}
       <Route path="/" element={<Mainpage/>}/>
+      <Route path='/resume' element={<Resume/>}/>
     </Routes>
    </Router>
    

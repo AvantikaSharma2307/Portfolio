@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
+// @ts-ignore
 import emailjs from '@emailjs/browser';
 
 // URL to your resume file

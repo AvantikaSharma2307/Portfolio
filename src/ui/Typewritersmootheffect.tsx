@@ -3,7 +3,7 @@ import { TypewriterEffectSmooth } from "./Typewritereffect";
 export function TypewriterEffectSmoothDemo() {
   const words = [
     {
-      text: "Hey 👋",
+      text: "Hey👋 ",
     },
     {
       text: "I'm",
@@ -12,12 +12,13 @@ export function TypewriterEffectSmoothDemo() {
       text: "Avantika",
     },
     {
-      text: "Sharma a",
+      text: "Sharma",
     },
     {
-      text: "Full Stack Developer 💻",
+      text: "A  Full Stack Developer 💻",
       className: "text-blue-500 dark:text-blue-500",
     },
+    
   ];
   return (
     <div className="flex flex-col items-center justify-center h-[40rem]  ">
