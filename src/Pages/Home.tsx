@@ -9,7 +9,7 @@ export default function Home() {
     <SparklesPreview/>
    
     </div>
-
+    <p className="text-center text-white mt-14">Made with ❤️ by Avantika Sharma</p>
     </>
   )
 }

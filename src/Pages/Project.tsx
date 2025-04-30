@@ -1,20 +1,79 @@
-import { CardSpotlightDemo } from "../Components/Cards"
-import Image from "../assests/DALL·E 2024-09-28 14.53.52 - A modern kitchen counter with ingredients like vegetables, fruits, and spices laid out neatly. There are kitchen utensils like a knife, a cutting boar.webp"
-import Image1 from "../assests/android-chrome-192x192.png"
-import Image2 from "../assests/DALL·E 2024-11-06 22.31.32 - An image representing a GitHub user finder tool interface. The tool displays a search bar at the top where users can type a GitHub username, followed .webp"
+import { motion } from "framer-motion";
+import { CardSpotlightDemo } from "../Components/Cards";
+import Image from "../assests/receipe.png";
+import Image1 from "../assests/aydilooks.jpeg";
+import Image2 from "../assests/github_user_finder.png";
+import Image3 from "../assests/icetct.png";
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.2,
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  }),
+};
+
 export default function Project() {
   return (
     <>
-    <div className="mt-44" id="project">
-    <h1 className="font-serif text-white text-4xl md:text-5xl lg:text-6xl xl:text-7xl flex justify-center mb-10 md:mb-14">Recent Works</h1>
-    <div className="flex flex-wrap   flex justify-center ml-14 mr-14 gap-10">
-       <CardSpotlightDemo name="AydiLOOks" image={Image1} url="https://github.com/AydiLooks/aydilooks" />
-       <CardSpotlightDemo name="Receipe project" image={Image} url="https://github.com/AvantikaSharma2307/Receipe-Project" />
-       <CardSpotlightDemo name="Github_User_Finder" image={Image2} url="https://github.com/AvantikaSharma2307/Innogeeks-web"/>
-       {/* <CardSpotlightDemo name="d" image="" url="" /> */}
+      <motion.div
+        className="mt-44"
+        id="project"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ amount: 0.3 }} // triggers on partial view
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="font-serif text-white text-4xl md:text-5xl lg:text-6xl xl:text-7xl flex justify-center mb-10 md:mb-14">
+          Recent Works
+        </h1>
 
-    </div>
-    </div>
+        <div className="flex flex-wrap justify-center ml-14 mr-14 gap-10">
+          {[
+            {
+              name: "Receipe project",
+              image: Image,
+              url: "https://github.com/AvantikaSharma2307/Receipe-Project",
+            },
+            {
+              name: "Github_User_Finder",
+              image: Image2,
+              url: "https://github.com/AvantikaSharma2307/Innogeeks-web",
+            },
+            {
+              name: "ICETCT",
+              image: Image3,
+              url: "https://icetct-25.vercel.app/",
+            },
+            {
+              name: "AydiLOOks",
+              image: Image1,
+              url: "https://github.com/AydiLooks/aydilooks",
+            }
+          ].map((card, i) => (
+            <motion.div
+              key={card.name}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ amount: 0.3 }}
+              variants={cardVariants}
+            >
+              <CardSpotlightDemo
+                name={card.name}
+                image={card.image}
+                url={card.url}
+              />
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+      <p className="text-center text-white mt-14">Made with ❤️ by Avantika Sharma</p>
     </>
-  )
+  );
 }

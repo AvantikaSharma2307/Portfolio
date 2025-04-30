@@ -8,6 +8,7 @@ import {
   AiOutlineUser,
   AiFillContacts,
   AiTwotoneCustomerService,
+  AiOutlineAudit
 } from "react-icons/ai";
 
 const NavBar: React.FC = () => {
@@ -28,11 +29,8 @@ const NavBar: React.FC = () => {
   }, []);
 
   return (
-    <nav
-      className={` w-full fixed z-50 transition-all duration-300 ${
-        navColour ? "bg-black shadow-md" : "bg-transparent"
-      }`}
-    >
+    <nav className={`w-full sticky top-0 z-50 transition-all duration-300 ${navColour ? "bg-black shadow-md" : "bg-transparent"}`}>
+
       <div className="container mx-auto px-4 flex items-center justify-between py-4 md:py-4">
         <Link to="/" className="flex items-center">
           {/* Add your logo or title here */}
@@ -54,7 +52,9 @@ const NavBar: React.FC = () => {
             <li>
               <NavLink
                 to="/"
-                className="flex items-center hover:text-gray-400 relative group"
+                className={({ isActive }) =>
+                  `flex items-center hover:text-gray-400 relative group ${isActive ? "text-gray-400" : ""}`
+                }
                 onClick={() => setExpanded(false)}
               >
                 <AiOutlineHome className="mr-1" /> Home
@@ -62,65 +62,87 @@ const NavBar: React.FC = () => {
               </NavLink>
             </li>
             <li>
-              <a
-                href="#about"
-                className="flex items-center hover:text-gray-400 relative group"
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  `flex items-center hover:text-gray-400 relative group ${isActive ? "text-gray-400" : ""}`
+                }
                 onClick={() => setExpanded(false)}
               >
                 <AiOutlineUser className="mr-1" /> About
                 <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a
-                href="#project"
-                className="flex items-center hover:text-gray-400 relative group"
+              <NavLink
+                to="/project"
+                className={({ isActive }) =>
+                  `flex items-center hover:text-gray-400 relative group ${isActive ? "text-gray-400" : ""}`
+                }
                 onClick={() => setExpanded(false)}
               >
                 <AiOutlineFundProjectionScreen className="mr-1" /> Projects
                 <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a
-                href="#services"
-                className="flex items-center hover:text-gray-400 relative group"
+              <NavLink
+                to="/services"
+                className={({ isActive }) =>
+                  `flex items-center hover:text-gray-400 relative group ${isActive ? "text-gray-400" : ""}`
+                }
                 onClick={() => setExpanded(false)}
               >
                 <AiTwotoneCustomerService className="mr-1" /> Services
                 <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
-              </a>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
+                to="/experience"
+                className={({ isActive }) =>
+                  `flex items-center hover:text-gray-400 relative group ${isActive ? "text-gray-400" : ""}`
+                }
+                onClick={() => setExpanded(false)}
+              >
+                <AiOutlineAudit className="mr-1" /> Experience
+                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 to="/resume"
-                className="flex items-center hover:text-gray-400 relative group"
+                className={({ isActive }) =>
+                  `flex items-center hover:text-gray-400 relative group ${isActive ? "text-gray-400" : ""}`
+                }
                 onClick={() => setExpanded(false)}
               >
                 <CgFileDocument className="mr-1" /> Resume
                 <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <a
-                href="#contact"
-                className="flex items-center hover:text-gray-400 relative group"
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  `flex items-center hover:text-gray-400 relative group ${isActive ? "text-gray-400" : ""}`
+                }
                 onClick={() => setExpanded(false)}
               >
-                < AiFillContacts className="mr-1" /> Contact
+                <AiFillContacts className="mr-1" /> Contact
                 <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a
-                href="https://github.com/AvantikaSharma2307"
+              <NavLink
+                to="https://github.com/AvantikaSharma2307"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center px-3 py-2 border border-white rounded-md hover:bg-white hover:text-black transition-colors"
               >
                 <CgGitFork className="mr-1" />
                 <AiFillStar className="ml-1" />
-              </a>
+              </NavLink>
             </li>
           </ul>
         </div>
