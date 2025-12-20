@@ -28,27 +28,52 @@ const NavBar: React.FC = () => {
     return () => window.removeEventListener("scroll", scrollHandler);
   }, []);
 
+  useEffect(() => {
+  document.body.style.overflow = expanded ? "hidden" : "auto";
+}, [expanded]);
+
+
   return (
     <nav className={`w-full sticky top-0 z-50 transition-all duration-300 ${navColour ? "bg-black shadow-md" : "bg-transparent"}`}>
 
       <div className="container mx-auto px-4 flex items-center justify-between py-4 md:py-4">
         <Link to="/" className="flex items-center">
           {/* Add your logo or title here */}
+           <div className="w-8 h-8 mx-auto bg-gradient-to-br from-cyan-600 to-purple-700 rounded-2xl flex items-center justify-center text-sm font-bold shadow-2xl">
+                    AS
+                  </div>
         </Link>
         <button
-          className="text-white md:hidden focus:outline-none"
-          onClick={() => setExpanded(!expanded)}
-        >
-          <span className="block w-6 h-0.5 bg-white mb-1"></span>
-          <span className="block w-6 h-0.5 bg-white mb-1"></span>
-          <span className="block w-6 h-0.5 bg-white"></span>
-        </button>
-        <div
-          className={`${
-            expanded ? "block" : "hidden"
-          } w-full md:flex md:items-center md:w-auto`}
-        >
-          <ul className="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 text-white text-lg">
+  className="relative z-50 text-white md:hidden focus:outline-none"
+  onClick={() => setExpanded(!expanded)}
+  aria-label="Toggle menu"
+>
+  {expanded ? (
+    <span className="text-5xl font-light leading-none">&times;</span>
+  ) : (
+    <>
+      <span className="block w-6 h-0.5 bg-white mb-1"></span>
+      <span className="block w-6 h-0.5 bg-white mb-1"></span>
+      <span className="block w-6 h-0.5 bg-white"></span>
+    </>
+  )}
+</button>
+
+       <div
+  className={`
+    ${expanded ? "fixed inset-0 bg-black/95 backdrop-blur-md" : "hidden"}
+    flex items-center justify-center
+    md:flex md:static md:bg-transparent md:backdrop-blur-0
+    md:items-center md:w-auto
+  `}
+>
+
+         <ul className="
+  flex flex-col items-center justify-center gap-6
+  text-white text-2xl
+  md:flex-row md:space-x-8 md:gap-0 md:text-lg
+">
+
             <li>
               <NavLink
                 to="/"
@@ -58,7 +83,8 @@ const NavBar: React.FC = () => {
                 onClick={() => setExpanded(false)}
               >
                 <AiOutlineHome className="mr-1" /> Home
-                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+                <span className="hidden md:block absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+
               </NavLink>
             </li>
             <li>
@@ -70,7 +96,7 @@ const NavBar: React.FC = () => {
                 onClick={() => setExpanded(false)}
               >
                 <AiOutlineUser className="mr-1" /> About
-                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+                <span className="hidden md:block absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
               </NavLink>
             </li>
             <li>
@@ -82,7 +108,7 @@ const NavBar: React.FC = () => {
                 onClick={() => setExpanded(false)}
               >
                 <AiOutlineFundProjectionScreen className="mr-1" /> Projects
-                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+                <span className="hidden md:block absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
               </NavLink>
             </li>
             <li>
@@ -94,7 +120,8 @@ const NavBar: React.FC = () => {
                 onClick={() => setExpanded(false)}
               >
                 <AiTwotoneCustomerService className="mr-1" /> Services
-                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+                <span className="hidden md:block absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+
               </NavLink>
             </li>
             <li>
@@ -106,7 +133,8 @@ const NavBar: React.FC = () => {
                 onClick={() => setExpanded(false)}
               >
                 <AiOutlineAudit className="mr-1" /> Experience
-                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+              <span className="hidden md:block absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+
               </NavLink>
             </li>
             <li>
@@ -118,7 +146,8 @@ const NavBar: React.FC = () => {
                 onClick={() => setExpanded(false)}
               >
                 <CgFileDocument className="mr-1" /> Resume
-                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+                <span className="hidden md:block absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+
               </NavLink>
             </li>
             <li>
@@ -130,7 +159,8 @@ const NavBar: React.FC = () => {
                 onClick={() => setExpanded(false)}
               >
                 <AiFillContacts className="mr-1" /> Contact
-                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+               <span className="hidden md:block absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+
               </NavLink>
             </li>
             <li>
