@@ -320,6 +320,14 @@ export default function About() {
             </div>
 
             {/* Footer */}
+             <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    className="text-center py-8 mt-16 text-gray-400"
+                  >
+                    <p>Made with <span className="text-red-500">❤️</span> by Avantika Sharma</p>
+                  </motion.div>
            
         </div>
     );
